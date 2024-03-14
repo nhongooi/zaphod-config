@@ -18,7 +18,7 @@
           compatible = "zmk,behavior-hold-tap";
           label = "HOMEROW_MODS";
           #binding-cells = <2>;
-          tapping-term-ms = <230>;
+          tapping-term-ms = <180>;
           quick_tap_ms = <0>;
           flavor = "tap-preferred";
           bindings = <&kp>, <&kp>;
@@ -52,17 +52,17 @@
         default_layer {
             bindings = <
             &kp Q       &kp W        &kp E        &kp R       &kp T                &kp Y      &kp U       &kp I          &kp O         &kp P
-            &hm LGUI A  &hm LSHFT S  &hm LCTRL D  &hm LALT F  &kp G                &kp H      &hm RALT J  &hm RCTRL K    &hm RSHFT L   &hm RGUI SEMI
+            &hm LCTRL A  &hm LSHFT S  &hm LGUI D  &hm LALT F  &kp G                &kp H      &hm RALT J  &hm RGUI K    &hm RSHFT L   &hm RCTRL SEMI
             &kp Z       &kp X        &kp C        &kp V       &kp B                &kp N      &kp M       &kp COMMA      &kp DOT       &kp FSLH
                                                 &lt 3 TAB   &lt 1 SPC            &lt 2 RET  &dbspc
             >;
         };
         lower_layer {
             bindings = <
-            &kp LG(SPC)     &kp LC(LEFT)  &trans      &kp LC(RIGHT)  &trans             &kp LBKT  &kp N7  &kp N8 &kp N9 &kp RBKT
-            &kp LG(LS(SPC)) &kp LG(J)     &kp LG(K)   &kp LG(L)      &kp LG(SEMI)       &kp SQT   &kp N4	&kp N5 &kp N6 &kp EQUAL
+            &kp LG(SPC)     &kp LC(LEFT)  &kp LC(UP)  &kp LC(RIGHT)  &trans             &kp LBKT  &kp N7  &kp N8 &kp N9 &kp RBKT
+            &trans          &trans        &trans      &trans         &trans             &kp SQT   &kp N4	&kp N5 &kp N6 &kp EQUAL
             &kp LG(LS(Q))   &kp LG(N1)    &kp LG(N2)  &kp LG(N3)     &kp LG(N4)         &kp MINUS &kp N1  &kp N2 &kp N3 &kp BSLH
-                                                    &trans     &trans             &kp DOT   &kp N0
+                                                      &trans         &trans             &kp DOT   &kp N0
             >;
         };
         raise_layer {
@@ -75,9 +75,9 @@
         };
         con_layer {
             bindings = <
-            &kp LC(LS(T)) &kp LG(LS(TAB)) &kp LG(W) &kp LC(TAB) &kp LG(LA(R))     &kp LBRC  &kp AMPS  &kp ASTRK  &kp LPAR  &kp RBRC
+            &kp LG(LS(T)) &kp LC(LS(TAB)) &kp LG(W) &kp LC(TAB) &kp LG(T)     &kp LBRC  &kp AMPS  &kp ASTRK  &kp LPAR  &kp RBRC
             &kp LG(Z)     &kp LG(X)       &kp LG(C) &kp LG(V)   &kp LG(Y)     &kp DQT   &kp DLLR  &kp PRCNT  &kp CARET &kp PLUS
-            &trans        &kp LA(B)       &kp LA(D) &kp LA(F)   &kp LC(N1)    &kp UNDER &kp EXCL  &kp AT     &kp HASH  &kp PIPE
+            &trans        &trans          &trans    &trans      &trans        &kp UNDER &kp EXCL  &kp AT     &kp HASH  &kp PIPE
                                                     &trans      &trans        &trans    &kp RPAR
             >;
         };
