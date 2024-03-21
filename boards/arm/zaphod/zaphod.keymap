@@ -10,7 +10,10 @@
 #include <dt-bindings/zmk/outputs.h>
 
 // Using layer taps on thumbs, having quick tap as well helps w/ repeating space/backspace
-&lt { quick_tap_ms = <160>; };
+&lt {
+  tapping-term-ms = <150>;
+  quick_tap_ms = <140>;
+};
 
 / {
     behaviors {
@@ -18,9 +21,9 @@
           compatible = "zmk,behavior-hold-tap";
           label = "HOMEROW_MODS";
           #binding-cells = <2>;
-          tapping-term-ms = <180>;
-          quick_tap_ms = <150>;
-          flavor = "balanced";
+          tapping-term-ms = <150>;
+          quick_tap_ms = <140>;
+          flavor = "tap-preferred";
           bindings = <&kp>, <&kp>;
         };
         gresc: grave_escape {
@@ -51,16 +54,16 @@
         compatible = "zmk,keymap";
         default_layer {
             bindings = <
-            &kp Q       &kp W        &kp E        &kp R       &kp T                &kp Y      &kp U       &kp I          &kp O         &kp P
-            &hm LCTRL A  &hm LSHFT S  &hm LGUI D  &hm LALT F  &kp G                &kp H      &hm RALT J  &hm RGUI K    &hm RSHFT L   &hm RCTRL SEMI
-            &kp Z       &kp X        &kp C        &kp V       &kp B                &kp N      &kp M       &kp COMMA      &kp DOT       &kp FSLH
+            &kp Q        &kp W        &kp E        &kp R       &kp T                &kp Y      &kp U       &kp I          &kp O         &kp P
+            &hm LCTRL A  &hm LSHFT S  &hm LGUI D   &hm LALT F  &kp G                &kp H      &hm RALT J  &hm RGUI K     &hm RSHFT L   &hm RCTRL SEMI
+            &kp Z        &kp X        &kp C        &kp V       &kp B                &kp N      &kp M       &kp COMMA      &kp DOT       &kp FSLH
                                                 &lt 3 TAB   &lt 1 SPC            &lt 2 RET  &dbspc
             >;
         };
         lower_layer {
             bindings = <
             &kp LG(SPC)     &kp LC(LEFT)  &kp LC(UP)  &kp LC(RIGHT)  &trans             &kp LBKT  &kp N7  &kp N8 &kp N9 &kp RBKT
-            &trans          &trans        &trans      &trans         &kp LG(FSLH)       &kp SQT   &kp N4	&kp N5 &kp N6 &kp EQUAL
+            &trans          &kp F7        &kp F8      &trans         &kp LG(FSLH)       &kp SQT   &kp N4	&kp N5 &kp N6 &kp EQUAL
             &kp LG(N1)      &kp LG(N7)    &kp LG(N4)  &kp LG(N5)     &kp LA(F12)        &kp MINUS &kp N1  &kp N2 &kp N3 &kp BSLH
                                                       &trans         &trans             &kp DOT   &kp N0
             >;
