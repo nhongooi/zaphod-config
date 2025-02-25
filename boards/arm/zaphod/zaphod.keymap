@@ -10,7 +10,7 @@
 #include <dt-bindings/zmk/outputs.h>
 
 &lt {
-  tapping-term-ms = <150>;
+  tapping-term-ms = <160>;
 };
 
 / {
@@ -19,7 +19,15 @@
           compatible = "zmk,behavior-hold-tap";
           label = "HOMEROW_MODS";
           #binding-cells = <2>;
-          tapping-term-ms = <150>;
+          tapping-term-ms = <210>;
+          flavor = "balanced";
+          bindings = <&kp>, <&kp>;
+        };
+        mk: modified_key {
+          compatible = "zmk,behavior-hold-tap";
+          label = "HOMEROW_MODS";
+          #binding-cells = <2>;
+          tapping-term-ms = <220>;
           flavor = "tap-preferred";
           bindings = <&kp>, <&kp>;
         };
@@ -30,42 +38,36 @@
           bindings = <&kp BSPC>, <&kp DEL>;
           mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-         qescd: qesc_dance {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <150>;
-            bindings = <&kp Q>, <&kp Q>, <&kp ESC>;
-        };
     };
     combos {
         compatible = "zmk,combos";
         colon {
-            timeout-ms = <50>;
+            timeout-ms = <60>;
             key-positions = <11 19>;
             bindings = <&kp COLON>;
         };
         colon2 {
-            timeout-ms = <50>;
+            timeout-ms = <60>;
             key-positions = <18 19>;
             bindings = <&kp COLON>;
         };
         double_quote {
-            timeout-ms = <50>;
+            timeout-ms = <60>;
             key-positions = <11 15>;
             bindings = <&kp DQT>;
         };
         double_quote2 {
-            timeout-ms = <50>;
+            timeout-ms = <60>;
             key-positions = <18 15>;
             bindings = <&kp DQT>;
         };
         tilda {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
             key-positions = <18 9>;
             bindings = <&kp TILDE>;
         };
         pipe {
-            timeout-ms = <50>;
+            timeout-ms = <80>;
             key-positions = <18 29>;
             bindings = <&kp PIPE>;
         };
@@ -87,47 +89,54 @@
             then-layer = <4>;
         };
     };
-
     keymap {
         compatible = "zmk,keymap";
         default_layer {
             bindings = <
-            &qescd        &kp W        &kp E        &kp R       &kp T                &kp Y      &kp U       &kp I          &kp O         &kp P
-            &hm LCTRL A  &hm LSHFT S  &hm LGUI D   &hm LALT F  &kp G                &kp H      &hm RALT J  &hm RGUI K     &hm RSHFT L   &hm RCTRL SEMI
-            &kp Z        &kp X        &kp C        &kp V       &kp B                &kp N      &kp M       &kp COMMA      &kp DOT       &kp FSLH
-                                                &lt 3 TAB   &lt 1 SPC            &lt 2 RET  &dbspc
+            &mk ESC Q   &kp W        &kp E        &kp R       &kp T          &mk ESC Y    &kp U       &kp I          &kp O         &kp P
+            &hm LGUI A  &hm LSHFT S  &hm LCTRL D  &hm LALT F  &kp G          &kp H        &hm RALT J  &hm RCTRL K    &hm RSHFT L   &hm RGUI SEMI
+            &kp Z       &kp X        &kp C        &kp V       &kp B          &kp N        &kp M       &kp COMMA      &kp DOT       &lt 5 FSLH
+                                                  &lt 3 TAB   &lt 1 SPC      &lt 2 RET    &dbspc
             >;
         };
-        lower_layer {
+        space_layer {
             bindings = <
-            &kp LG(SPC)     &kp LC(LEFT)  &kp LC(UP)  &kp LC(RIGHT)  &trans             &kp LBKT  &kp N7  &kp N8 &kp N9 &kp RBKT
-            &trans          &kp F7        &kp F8      &trans         &kp LG(FSLH)       &kp SQT   &kp N4	&kp N5 &kp N6 &kp EQUAL
-            &kp LG(N1)      &kp LG(N7)    &kp LG(N4)  &kp LG(N5)     &kp LA(F12)        &kp MINUS &kp N1  &kp N2 &kp N3 &kp BSLH
-                                                      &trans         &trans             &kp DOT   &kp N0
+            &kp LG(SPC)       &kp LG(LS(J))    &kp LG(LS(K))   &kp LG(LS(L))   &kp LG(LS(SEMI))     &kp LBKT    &kp N7  &kp N8   &kp N9   &kp RBKT
+            &kp LG(LS(SPC))   &kp LG(J)        &kp LG(K)       &kp LG(L)       &kp LG(SEMI)         &kp SQT     &kp N4	&kp N5   &kp N6   &kp EQUAL
+            &kp LG(LS(Q))     &kp LG(N1)       &kp LG(N2)      &kp LG(N3)      &kp LG(N4)           &kp MINUS   &kp N1  &kp N2   &kp N3   &kp BSLH
+                                                               &trans          &trans               &kp DOT     &kp N0
             >;
         };
-        raise_layer {
+        enter_layer {
             bindings = <
-            &kp ESC  &kp F1		&kp F2   &kp F3 	&kp F4     &kp PG_UP   &kp HOME 	&trans   &kp ESC 		&kp GRAVE
-            &trans   &kp F5		&kp F6   &kp F7 	&kp	F8     &kp LEFT    &kp DOWN 	&kp UP   &kp RIGHT 	&kp COLON
-            &trans   &kp F9		&kp F10  &kp F11 	&kp F12    &kp PG_DN   &kp END 	  &kp DEL  &trans 	  &kp QMARK
-                                        &trans    &trans     &trans     &trans
+            &kp ESC  &kp F1		&kp F2   &kp F3 	&kp F4     &kp PG_UP   &kp HOME 	&kp LC(U)   &trans 		&kp GRAVE
+            &trans   &kp F5		&kp F6   &kp F7 	&kp	F8     &kp LEFT    &kp DOWN 	&kp UP   &kp RIGHT 	  &kp COLON
+            &trans   &kp F9		&kp F10  &kp F11 	&kp F12    &kp PG_DN   &kp END 	    &kp LC(D)   &trans 	  &kp QMARK
+                                                    &trans     &trans      &trans       &trans
             >;
         };
-        con_layer {
+        tab_layer {
             bindings = <
-            &kp LG(LS(T)) &kp LC(LS(TAB)) &kp LG(W) &kp LC(TAB) &kp LG(T)     &kp LBRC  &kp AMPS  &kp ASTRK  &kp LPAR  &kp RBRC
-            &kp LG(Z)     &kp LG(X)       &kp LG(C) &kp LG(V)   &kp LG(Y)     &kp DQT   &kp DLLR  &kp PRCNT  &kp CARET &kp PLUS
-            &term_quit_colon        &trans          &trans    &trans      &trans        &kp UNDER &kp EXCL  &kp AT     &kp HASH  &kp PIPE
-                                                    &trans      &trans        &trans    &kp RPAR
+            &kp LC(LS(T))   &kp LC(LS(TAB))  &kp LC(W)  &kp LC(TAB)  &kp LC(T)     &kp LBRC  &kp AMPS  &kp ASTRK  &kp LPAR  &kp RBRC
+            &kp LC(Z)       &kp LC(X)        &kp LC(C)  &kp LC(V)    &kp LC(Y)     &kp DQT   &kp DLLR  &kp PRCNT  &kp CARET &kp PLUS
+            &kp K_VOL_DN    &kp K_PREV       &kp K_PP   &kp K_NEXT   &kp K_VOL_UP  &kp UNDER &kp EXCL  &kp AT     &kp HASH  &kp PIPE
+                                                        &trans       &trans        &trans    &kp RPAR
             >;
         };
-        adj_layer {
+        conn_layer {
             bindings = <
-            &bt BT_CLR &bt BT_SEL 1    &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4     &trans    &trans    &trans   &trans    &bootloader
-            &bt BT_NXT &trans          &trans         &trans    		 &trans    				&trans    &trans    &trans    &trans    &trans
+            &bt BT_CLR &bt BT_SEL 1    &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4     &trans    &trans    &trans    &trans    &sys_reset
+            &bt BT_NXT &trans          &trans         &trans         &trans    		  &trans    &trans    &trans    &trans    &bootloader
             &bt BT_PRV &trans          &trans         &trans         &trans           &trans    &trans    &trans    &trans    &trans
-                                                      &trans    		 &trans    				&trans    &trans
+                                       &trans         &trans         &trans     &trans
+            >;
+        };
+        slashz_layer {
+            bindings = <
+            &trans       &kp LA(COMMA)    &trans   &kp LA(DOT)  &trans      &trans  &kp N7  &kp N8   &kp N9   &trans
+            &trans       &trans           &trans   &trans       &trans      &trans  &kp N4	&kp N5   &kp N6   &trans
+            &trans       &trans           &trans   &trans       &trans      &trans  &kp N1  &kp N2   &kp N3   &trans
+                                                   &trans       &kp RET     &trans  &kp N0
             >;
         };
     };
